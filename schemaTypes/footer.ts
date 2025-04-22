@@ -10,6 +10,7 @@ export default defineType({
       name: 'socialLinks',
       title: 'Links Sociais',
       type: 'array',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
       of: [
         {
           type: 'object',
@@ -24,41 +25,49 @@ export default defineType({
       name: 'logo',
       title: 'Logo',
       type: 'image',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
       name: 'programmingTitle',
       title: 'Título da Programação',
       type: 'string',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
       name: 'programmingText',
       title: 'Texto da Programação',
       type: 'string',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
       name: 'helpTitle',
       title: 'Título da Ajuda',
       type: 'string',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
       name: 'helpPhone',
       title: 'Telefone de Ajuda',
       type: 'string',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
       name: 'locationTitle',
       title: 'Título da Localização',
       type: 'string',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
       name: 'location',
       title: 'Endereço',
       type: 'string',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
       name: 'mapEmbedUrl',
       title: 'URL do Mapa (iframe)',
       type: 'url',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
   ],
 })
