@@ -1,5 +1,10 @@
 import { defineType, defineField} from 'sanity'
 
+
+const phoneRegex: RegExp = /^\+\d{1,3}\s?\(?\d{1,3}\)?\s?\d{4,5}-?\d{4}$/;
+
+
+
 export default defineType({
   name: 'contactPage',
   title: 'Página de Contato',
@@ -11,32 +16,68 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'bannerImage',
+      title: 'Imagem de banner',
+      description:"Aspecto da imagem 2x1, resolução esperada 2000x1000",
+      type: 'image',  
+    }),
+    defineField({
       name: 'description',
       title: 'Descrição',
       type: 'text',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
       name: 'address',
       title: 'Endereço',
       type: 'object',
       fields: [
-        { name: 'street', title: 'Rua', type: 'string' },
-        { name: 'number', title: 'Número', type: 'string' },
-        { name: 'district', title: 'Bairro', type: 'string' },
-        { name: 'city', title: 'Cidade', type: 'string' },
-        { name: 'state', title: 'Estado', type: 'string' },
-        { name: 'zip', title: 'CEP', type: 'string' },
+        { name: 'street', title: 'Rua', type: 'string', validation: Rule => Rule.required().error('Esse é um campo obrigatório.'), },
+        { name: 'number', title: 'Número', type: 'string', validation: Rule => Rule.required().error('Esse é um campo obrigatório.'), },
+        { name: 'district', title: 'Bairro', type: 'string', validation: Rule => Rule.required().error('Esse é um campo obrigatório.'), },
+        { name: 'city', title: 'Cidade', type: 'string' , validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),},
+        { name: 'state', title: 'Estado', type: 'string', validation: Rule => Rule.required().error('Esse é um campo obrigatório.'), },
+        { name: 'zip', title: 'CEP', type: 'string', validation: Rule => Rule.required().error('Esse é um campo obrigatório.'), },
       ],
+    }),
+    defineField({
+      name: 'DefaultSocial',
+      title: '@ Padão',
+      type: 'string',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
+    }),
+    defineField({
+      name: 'DefaultSocialLink',
+      title: 'link do @ Padão',
+      type: 'url',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.').uri({scheme: ['https']}),
+    }),
+    defineField({
+      name: 'email',
+      title: 'email de contato',
+      type: 'string',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.').email().error("precisa ser um email valido"),
     }),
     defineField({
       name: 'phone',
       title: 'Telefone',
       type: 'string',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
-      name: 'email',
-      title: 'E-mail',
+      name: 'whatsApp',
+      title: 'Telefone do WhatsApp',
       type: 'string',
+      validation: Rule => Rule.regex(/^\d{11,13}$/, {
+        name: 'telefone internacional',
+        invert: false,
+      }).error('Insira um número no formato +55 (11) 91234-5678'),
+    }),
+    defineField({
+      name: 'AvailableHours',
+      title: 'Horario de disponibilidade',
+      type: 'string',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
   ],
 })
