@@ -27,7 +27,7 @@ export default defineType({
         defineField({
             name:"heroDescription",
             title:"Texto da sessão Hero",
-            type:"string",
+            type:"text",
         }),
         defineField({
             name:"heroButtonTitle",
@@ -48,6 +48,7 @@ export default defineType({
             name:"dividerText",
             title:"Texto Divisor de sessão",
             type:"array",
+            validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
             of:[
                 {
                     type:"block",
@@ -66,11 +67,13 @@ export default defineType({
             name: 'titleLive',
             title: 'Título Sessão Live',
             type: 'string',
+            validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
           }),
           defineField({
             name: 'descriptionLive',
             title: 'Descrição Sessão Live',
             type: 'array',
+            validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
             of:[
                 {
                     type:"block",
@@ -87,13 +90,17 @@ export default defineType({
           defineField({
             name: 'buttonLiveText',
             title: 'Botão Sessão Live',
+            validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
             type: 'string',
           }),
           defineField({
             name: 'butonLiveLink',
             title: 'Link Botão Sessão Live',
             type: 'url',
-            validation: (Rule) => Rule.uri({scheme: ['https']}),
+            validation: (Rule) => 
+                Rule.required().error('Esse é um campo obrigatório.')
+                    .uri({scheme: ['https']}),
+            
           }),
           defineField({
             name: 'liveBannerImage',
