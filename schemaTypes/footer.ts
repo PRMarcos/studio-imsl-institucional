@@ -58,10 +58,11 @@ export default defineType({
       validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
-      name: 'location',
+      name: 'address',
       title: 'Endereço',
-      type: 'string',
-      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
+      type: 'reference',
+      to: [{ type: 'address' }],
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'mapEmbedUrl',

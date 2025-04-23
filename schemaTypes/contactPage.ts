@@ -30,15 +30,9 @@ export default defineType({
     defineField({
       name: 'address',
       title: 'Endereço',
-      type: 'object',
-      fields: [
-        { name: 'street', title: 'Rua', type: 'string', validation: Rule => Rule.required().error('Esse é um campo obrigatório.'), },
-        { name: 'number', title: 'Número', type: 'string', validation: Rule => Rule.required().error('Esse é um campo obrigatório.'), },
-        { name: 'district', title: 'Bairro', type: 'string', validation: Rule => Rule.required().error('Esse é um campo obrigatório.'), },
-        { name: 'city', title: 'Cidade', type: 'string' , validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),},
-        { name: 'state', title: 'Estado', type: 'string', validation: Rule => Rule.required().error('Esse é um campo obrigatório.'), },
-        { name: 'zip', title: 'CEP', type: 'string', validation: Rule => Rule.required().error('Esse é um campo obrigatório.'), },
-      ],
+      type: 'reference',
+      to: [{ type: 'address' }],
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'DefaultSocial',
