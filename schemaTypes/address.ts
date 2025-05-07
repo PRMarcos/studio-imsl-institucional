@@ -2,7 +2,7 @@ import { defineType, defineField } from 'sanity'
 
 export default defineType({
   name: 'address',
-  title: 'Endereços',
+  title: 'Cadastro de Endereços',
   type: 'document',
   fields: [
     defineField({ name: 'title', title: 'Descrição', type: 'string', validation: Rule => Rule.required() }),
