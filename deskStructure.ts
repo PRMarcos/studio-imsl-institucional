@@ -1,6 +1,14 @@
 // structure.ts
 import { StructureResolver } from 'sanity/structure'
 
+const SingletonPages = [
+  "aboutPage",
+  "contactPage",
+  "footer",
+  "header",
+  "homePage",
+  "ourSmedsPage",
+]
 
 export const structure: StructureResolver = (S) =>
   S.list().showIcons()
@@ -15,28 +23,20 @@ export const structure: StructureResolver = (S) =>
           .documentId('homePage')
       ),
       S.listItem()
-      .title('Página Resumo da Palavra')
-      .child(
-        S.editor()
-          .id('contactPage')
-          .schemaType('contactPage')
-          .documentId('contactPage')
-      ),
-      S.listItem()
       .title('Página Sobre')
       .child(
         S.editor()
-          .id('contactPage')
-          .schemaType('contactPage')
-          .documentId('contactPage')
+          .id('aboutPage')
+          .schemaType('aboutPage')
+          .documentId('aboutPage')
       ),
       S.listItem()
-      .title('Página de Eventos')
+      .title('Página de Nossos SMEDS')
       .child(
         S.editor()
-          .id('contactPage')
-          .schemaType('contactPage')
-          .documentId('contactPage')
+          .id('ourSmedsPage')
+          .schemaType('ourSmedsPage')
+          .documentId('ourSmedsPage')
       ),
       S.listItem()
       .title('Página de Contato')
@@ -59,15 +59,15 @@ export const structure: StructureResolver = (S) =>
       .title('Componente Header')
       .child(
         S.editor()
-          .id('footer')
-          .schemaType('footer')
-          .documentId('footer')
+          .id('header')
+          .schemaType('header')
+          .documentId('header')
       ),
       S.divider(),
         // Outros itens soltos...
         ...S.documentTypeListItems().filter(
             (item) =>
-              !['footer',"contactPage","homePage","sermonPage","aboutPage","eventsPage",].includes(item.getId() ?? '')
+              !SingletonPages.includes(item.getId() ?? '')
           ),
        
     ])
