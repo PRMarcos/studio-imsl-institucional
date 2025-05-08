@@ -1,4 +1,3 @@
-// schemas/footer.ts
 import { defineType, defineField } from 'sanity'
 
 export default defineType({
@@ -9,17 +8,13 @@ export default defineType({
     defineField({
       name: 'socialLinks',
       title: 'Links Sociais',
-      type: 'array',
-      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
-      of: [
-        {
-          type: 'object',
-          fields: [
-            { name: 'platform', title: 'Plataforma', type: 'string' },
-            { name: 'url', title: 'URL', type: 'url' },
-          ],
-        },
+      type:"array",
+      of:[{
+        type: 'reference',
+        to: [{ type: 'socialLink' }],
+      }   
       ],
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'logo',
@@ -48,7 +43,8 @@ export default defineType({
     defineField({
       name: 'helpPhone',
       title: 'Telefone de Ajuda',
-      type: 'string',
+      type: 'reference',
+      to:[{type:"phoneEntry"}],
       validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
