@@ -12,7 +12,7 @@ export default defineType({
       validation: Rule => Rule.required().error('O nome é obrigatório.'),
     }),
     defineField({
-      name: 'phone',
+      name: 'number',
       title: 'Telefone',
       type: 'string',
       validation: Rule =>
