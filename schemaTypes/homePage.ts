@@ -37,6 +37,7 @@ export default defineType({
         defineField({
             name:"heroButtonLink",
             title:"Link CTA sessão Hero",
+            description:"Pode ser o caminho relativo para uma pagina como: /events ou uma url padrão: https://www.google.com.br",
             type:"string"
         }),
         defineField({
