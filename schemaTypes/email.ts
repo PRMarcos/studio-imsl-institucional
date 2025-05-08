@@ -12,7 +12,7 @@ export default defineType({
       validation: Rule => Rule.required().error('O nome é obrigatório.'),
     }),
     defineField({
-      name: 'adress',
+      name: 'address',
       title: 'E-mail',
       type: 'string',
       validation: Rule =>
