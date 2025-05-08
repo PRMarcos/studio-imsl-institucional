@@ -34,38 +34,40 @@ export default defineType({
       to: [{ type: 'address' }],
       validation: Rule => Rule.required(),
     }),
+
     defineField({
       name: 'DefaultSocial',
-      title: '@ Padão',
-      type: 'string',
+      title: 'Social link padão',
+      description:"Aqui, o texto do @ vai ser utilizado, assim como a url para direcionar para a rede social",
+      type: 'reference',
+      to:[{type:"socialLink"}],
       validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
-    defineField({
-      name: 'DefaultSocialLink',
-      title: 'link do @ Padão',
-      type: 'url',
-      validation: Rule => Rule.required().error('Esse é um campo obrigatório.').uri({scheme: ['https']}),
-    }),
+
     defineField({
       name: 'email',
       title: 'email de contato',
-      type: 'string',
-      validation: Rule => Rule.required().error('Esse é um campo obrigatório.').email().error("precisa ser um email valido"),
+      type: 'reference',
+      to: [{ type: 'emailEntry' }],
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.')
     }),
     defineField({
       name: 'phone',
       title: 'Telefone',
-      type: 'string',
+      type: 'reference',
+      to: [{ type: 'phoneEntry' }],
       validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
     defineField({
-      name: 'whatsApp',
-      title: 'Telefone do WhatsApp',
-      type: 'string',
-      validation: Rule => Rule.regex(/^\d{11,13}$/, {
-        name: 'telefone internacional',
-        invert: false,
-      }).error('Insira um número no formato +55 (11) 91234-5678'),
+      name: 'WhatsPhone',
+      title: 'Telefone',
+      description:"Esse telefone precisa ser um numero cadastrado no whatsApp, para evitar erros na página",
+      type: 'reference',
+      to: [{ type: 'phoneEntry' }],
+      options: {
+        filter: 'isWhats == true',
+      },
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'AvailableHours',
