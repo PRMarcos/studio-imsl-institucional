@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity'
+import { validateImageInput } from '../icons/utils/validateImageInput'
 
 export default defineType({
   name: 'supportedSocialMidia',
@@ -23,33 +24,8 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      validation: Rule =>
-        Rule.required()
-          .custom(async (image, context) => {
-            const { getClient } = context
-            const client = getClient({ apiVersion: '2023-01-01' })
-            const assetId = image?.asset?._ref
-
-            if (!assetId) return 'Imagem não encontrada'
-
-            const asset = await client.getDocument(assetId)
-            if (!asset) return 'Imagem inválida'
-
-            const { metadata } = asset
-            const { dimensions } = metadata || {}
-
-            if (!dimensions) return 'Não foi possível obter as dimensões da imagem'
-
-            if (dimensions.width !== dimensions.height) {
-              return 'A imagem precisa ser quadrada'
-            }
-
-            if (dimensions.width > 200 || dimensions.height > 200) {
-              return 'A imagem deve ter no máximo 200x200px'
-            }
-
-            return true
-          }),
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.')
+              .custom(validateImageInput({ maxHeight: 100, aspectRatio: 1 })),
     }),
   ],
 })

@@ -1,4 +1,5 @@
 import { defineType, defineField} from 'sanity'
+import { validateImageInput } from '../icons/utils/validateImageInput';
 
 
 export default defineType({
@@ -16,7 +17,8 @@ export default defineType({
       title: 'Imagem de banner',
       description:"Aspecto da imagem 2x1, resolução esperada 2000x1000",
       type: 'image',
-      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.')
+              .custom(validateImageInput({ maxHeight: 1000, maxWidth: 2000, aspectRatio: 2 })),
     }),
     defineField({
       name: 'description',

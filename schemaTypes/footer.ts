@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity'
+import { validateImageInput } from '../icons/utils/validateImageInput';
 
 export default defineType({
   name: 'footer',
@@ -20,7 +21,8 @@ export default defineType({
       name: 'logo',
       title: 'Logo',
       type: 'image',
-      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.')
+              .custom(validateImageInput({ maxWidth: 300 })),
     }),
     defineField({
       name: 'programmingTitle',

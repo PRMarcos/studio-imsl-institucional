@@ -1,5 +1,6 @@
 
 import {defineType, defineField} from "sanity"
+import { validateImageInput } from "../icons/utils/validateImageInput";
 
 export default defineType({
     name:"homePage",
@@ -43,7 +44,9 @@ export default defineType({
         defineField({
             name:"heroImage",
             title:"Imagem da sessão Hero",
-            type:"image"
+            type:"image",
+            validation: Rule => Rule
+                    .custom(validateImageInput({ maxWidth: 2000, })),
         }),
         defineField({
             name:"dividerText",
@@ -107,6 +110,8 @@ export default defineType({
             name: 'liveBannerImage',
             title: 'Banner Sessão Live',
             type: 'image',
+            validation: Rule => Rule
+                .custom(validateImageInput({ maxHeight: 600})),
         }),
     ],
      preview: {

@@ -1,4 +1,5 @@
 import { defineType, defineField} from 'sanity'
+import { validateImageInput } from '../icons/utils/validateImageInput';
 
 
 const phoneRegex: RegExp = /^\+\d{1,3}\s?\(?\d{1,3}\)?\s?\d{4,5}-?\d{4}$/;
@@ -19,7 +20,9 @@ export default defineType({
       name: 'bannerImage',
       title: 'Imagem de banner',
       description:"Aspecto da imagem 2x1, resolução esperada 2000x1000",
-      type: 'image',  
+      type: 'image',
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.')
+              .custom(validateImageInput({ maxHeight: 1000, maxWidth: 2000, aspectRatio: 2 })), 
     }),
     defineField({
       name: 'description',
