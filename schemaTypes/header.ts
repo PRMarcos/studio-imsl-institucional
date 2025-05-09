@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity'
+import { validateImageInput } from '../icons/utils/validateImageInput'
 
 export default defineType({
   name: 'header',
@@ -34,5 +35,24 @@ export default defineType({
       ],
       validation: Rule => Rule.required().min(1).error('Adicione ao menos um item no menu.'),
     }),
+    defineField({
+      name: 'icon',
+      title: 'Ícone do header',
+      description: "Imagem de icone do header. Precisa ser no maximo 100x100 e precisa ser uma imagem quadrada",
+      type: 'image',
+      options: {
+        hotspot: false,
+      },
+      validation: Rule =>
+        Rule.required()
+          .custom(validateImageInput({ maxHeight: 100, maxWidth: 100, aspectRatio: 1 })),
+    }),
   ],
+  preview: {
+    prepare() {
+      return {
+        title: "Header",
+      };
+    },
+  },
 })
