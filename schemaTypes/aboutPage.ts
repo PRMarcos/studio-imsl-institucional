@@ -1,10 +1,5 @@
 import { defineType, defineField} from 'sanity'
 
-
-const phoneRegex: RegExp = /^\+\d{1,3}\s?\(?\d{1,3}\)?\s?\d{4,5}-?\d{4}$/;
-
-
-
 export default defineType({
   name: 'aboutPage',
   title: 'Página Sobre',
@@ -23,4 +18,11 @@ export default defineType({
       validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
   ],
+   preview: {
+    prepare() {
+      return {
+        title: "Página Sobre",
+      };
+    },
+  },
 })

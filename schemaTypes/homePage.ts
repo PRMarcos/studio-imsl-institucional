@@ -108,5 +108,12 @@ export default defineType({
             title: 'Banner Sessão Live',
             type: 'image',
         }),
-    ]
+    ],
+     preview: {
+    prepare() {
+      return {
+        title: "Página Home",
+      };
+    },
+  },
 })

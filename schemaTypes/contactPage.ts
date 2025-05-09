@@ -76,4 +76,11 @@ export default defineType({
       validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
     }),
   ],
+   preview: {
+    prepare() {
+      return {
+        title: "Página de Contato",
+      };
+    },
+  },
 })
