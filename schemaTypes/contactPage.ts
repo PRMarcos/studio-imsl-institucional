@@ -48,6 +48,29 @@ export default defineType({
     }),
 
     defineField({
+      name: 'usefulLink',
+      title: 'Link util no footer',
+      description:"pode ser qualquer link, vai ficar sempre disponivel no footer",
+      type: 'object',
+     fields:[
+      defineField({
+        name:"label",
+        title:"Nome do link",
+        description:"vai ser usado para apresentação no footer",
+        type:"string",
+       validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
+      }),
+        defineField({
+        name:"url",
+        title:"url do link",
+        type:"url",
+       validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
+      }),
+     ],
+      validation: Rule => Rule.required().error('Esse é um campo obrigatório.'),
+    }),
+
+    defineField({
       name: 'email',
       title: 'email de contato',
       type: 'reference',
