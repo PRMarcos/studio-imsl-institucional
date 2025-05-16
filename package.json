@@ -10,12 +10,14 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy",
-    "update-sanity": "npm install @sanity/vision@latest sanity@latest @sanity/eslint-config-studio@latest"
+    "update-sanity": "npm install @sanity/vision@latest sanity@latest @sanity/eslint-config-studio@latest",
+    "update-types": "npm install git+https://github.com/prmarcos/sanity-shared.git"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
+    "@sanity/color-input": "^4.0.3",
     "@sanity/vision": "^3.88.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
