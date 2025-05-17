@@ -5,6 +5,7 @@ import {schemaTypes} from "sanity-shared"
 
 import { structure } from './deskStructure'
 import { colorInput } from '@sanity/color-input'
+import { codeInput } from '@sanity/code-input'
 
 export default defineConfig({
   name: 'default',
@@ -13,7 +14,7 @@ export default defineConfig({
   projectId: '129trp1f',
   dataset: 'production',
 
-  plugins: [structureTool({structure}), visionTool(), colorInput(),],
+  plugins: [structureTool({structure}), visionTool(), colorInput(),codeInput()],
 
   schema: {
     types: schemaTypes,
