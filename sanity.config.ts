@@ -15,7 +15,6 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [structureTool({structure}), visionTool(), colorInput(),codeInput()],
-
   schema: {
     types: schemaTypes,
   },
