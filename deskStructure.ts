@@ -8,6 +8,8 @@ const SingletonPages = [
   "header",
   "homePage",
   "ourSmedsPage",
+  "sermonSummaryPage",
+  "eventsPage"
 ]
 
 export const structure: StructureResolver = (S) =>
@@ -45,6 +47,22 @@ export const structure: StructureResolver = (S) =>
           .id('contactPage')
           .schemaType('contactPage')
           .documentId('contactPage')
+      ),
+       S.listItem()
+      .title('Página de Eventos')
+      .child(
+        S.editor()
+          .id('eventsPage')
+          .schemaType('eventsPage')
+          .documentId('eventsPage')
+      ),
+       S.listItem()
+      .title('Página de Resumos')
+      .child(
+        S.editor()
+          .id('sermonSummaryPage')
+          .schemaType('sermonSummaryPage')
+          .documentId('sermonSummaryPage')
       ),
       S.divider(),
       S.listItem()

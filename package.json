@@ -11,7 +11,7 @@
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy",
     "update-sanity": "npm install @sanity/vision@latest sanity@latest @sanity/eslint-config-studio@latest",
-    "update-types": "npm install git+https://github.com/prmarcos/sanity-shared.git"
+    "update-types": "npm install github:prmarcos/sanity-shared"
   },
   "keywords": [
     "sanity"
@@ -23,7 +23,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanity": "^3.89.0",
-    "sanity-shared": "github:prmarcos/sanity-shared#v1.0.5",
+    "sanity-shared": "github:prmarcos/sanity-shared",
     "styled-components": "^6.1.15"
   },
   "devDependencies": {
