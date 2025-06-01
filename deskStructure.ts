@@ -41,11 +41,6 @@ export const structure: StructureResolver = (S) =>
                     .schemaType('eventsPage')
                     .documentId('eventsPage')
                 ),
-              S.listItem().title("Cadastro").child(teste =>
-                S.editor()
-                  .title('Cadastro')
-                  .schemaType('event')
-              ),
               S.listItem().title("Todos os Eventos").child(
                 S.documentList()
                   .title('Todos os Eventos')
@@ -60,7 +55,7 @@ export const structure: StructureResolver = (S) =>
               ),
               S.listItem().title("Eventos Ativos").child(
                 S.documentList()
-                  .title('Eventos Inativos')
+                  .title('Eventos Ativos')
                   .schemaType('event')
                   .filter('_type == "event" && isActive == true')
               )
@@ -80,11 +75,6 @@ export const structure: StructureResolver = (S) =>
                     .schemaType('sermonSummaryPage')
                     .documentId('sermonSummaryPage')
                 ),
-              S.listItem().title("Cadastro").child(teste =>
-                S.editor()
-                  .title('Cadastro')
-                  .schemaType('sermonSummary')
-              ),
               S.listItem().title("Todos os Resumos").child(
                 S.documentList()
                   .title('Todos os Resumos')
@@ -99,7 +89,7 @@ export const structure: StructureResolver = (S) =>
               ),
               S.listItem().title("Resumos Ativos").child(
                 S.documentList()
-                  .title('Resumos Inativos')
+                  .title('Resumos Ativos')
                   .schemaType('sermonSummary')
                   .filter('_type == "sermonSummary" && isActive == true')
               ),
